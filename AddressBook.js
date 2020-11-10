@@ -68,6 +68,10 @@ class Contact{
         else throw "incorrect email Id"
     }
 }
- let contact =new Contact("Sreeja","Godishala","bankcolony","warangal","telangana","123456","9087654321","srijagodishala@gmail.com");
- console.log(contact); 
+let contact1 =new Contact("Sreeja","Godishala","bankcolony","warangal","telangana","123456","9087654321","srijagodishala@gmail.com");
+let contact2 = new Contact("Anjali","Varma","complex","pune","maharastra","908765","2345187645","anjalivarma@gmail.com");
+let addressBook = new Array();
+addressBook.push(contact1);
+addressBook.push(contact2);
+console.log(addressBook);
 
