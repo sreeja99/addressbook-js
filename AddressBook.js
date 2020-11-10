@@ -74,4 +74,6 @@ let addressBook = new Array();
 addressBook.push(contact1);
 addressBook.push(contact2);
 console.log(addressBook);
-
+//4 edit contact
+addressBook.find((contact)=>contact.firstName =="Anjali").firstName ="Krishna";
+console.log(addressBook);
