@@ -76,8 +76,16 @@ addressBook.push(contact2);
 console.log(addressBook);
 //4 edit contact
 addressBook.find((contact)=>contact.firstName =="Anjali").firstName ="Krishna";
+console.log("UC4:Edit Contact");
 console.log(addressBook);
 //5 delete contact
 addressBook.pop(addressBook.find((contact)=>contact.firstName =="Krishna"));
+console.log("UC5:Del Contact")
 console.log(addressBook);
+//6 counting number of contacts
+function counter(count){return ++count;}
+let numOfContacts=addressBook.reduce(counter,0);
+console.log("UC6 Count number Of Contacts");
+console.log(numOfContacts);
+
 
