@@ -19,15 +19,55 @@ class Contact{
     get zip(){return this._zip;}
     get phoneNumber(){return this._phoneNumber;}
     get emailId(){return this._emailId;}
-    set firstName(firstName){this._firstName=firstName;}
-    set lastName(lastName){this._lastName=lastName;}
-    set address(address){this._address=address;}
-    set city(city){this._city=city;}
-    set state(state){this._state=state;}
-    set zip(zip){this._zip=zip;}
-    set phoneNumber(phoneNumber){this._phoneNumber=phoneNumber;}
-    set emailId(emailId){this._emailId=emailId;}
+    set firstName(firstName){
+        let firstNameRegex = RegExp("^[A-Z]{1}[A-Za-z]{2,}$");
+        if(firstNameRegex.test(firstName))
+            this._firstName = firstName;
+        else throw "incorrect first name"
+    }
+    set lastName(lastName){
+        let lastNameRegex = RegExp("^[A-Z]{1}[A-Za-z]{2,}$")
+        if(lastNameRegex.test(lastName))
+        this._lastName = lastName;
+        else throw "incorrect last name"
+    }
+    set address(address){
+        let addressRegex = RegExp("^[A-Za-z0-9/,]{4,}$")
+        if(addressRegex.test(address))
+        this._address = address;
+        else throw "incorrect address"
+    }
+    set city(city){
+        let cityRegex = RegExp("^[a-zA-Z]{4,}$")
+        if(cityRegex.test(city))
+        this._city = city
+        else throw "incorrect city"
+    }
+    set state(state){
+        let stateRegex = RegExp("^[a-zA-Z]{4,}$")
+        if(stateRegex.test(state))
+        this._state = state;
+        else throw "incorrect state"
+    }
+    set zip(zip){
+        let zipRegex = RegExp("^[1-9]{1}[0-9]{5}$")
+        if(zipRegex.test(zip))
+        this._zip = zip
+        else throw "incorrect zip"
+    }
+    set phoneNumber(phoneNumber){
+        let phoneNumberRegex = RegExp("^[1-9]{1}[0-9]{9}$")
+        if(phoneNumberRegex.test(phoneNumber))
+        this._phoneNumber = phoneNumber
+        else throw "incorrect phone Number"
+    }
+    set emailId(emailId){
+        let emailIdRegex = RegExp("^[a-zA-Z0-9+_-]+([.][a-zA-Z0-9]+)*@([a-zA-Z0-9]+)([.][a-z]+)?[.][a-z]{2,}$")
+        if(emailIdRegex.test(emailId))
+        this._emailId = emailId
+        else throw "incorrect email Id"
+    }
 }
- let contact =new Contact("sreeja","godishala","hnk","wgl","telangana","12345","9087654321","srijagodishala@gmail.com");
+ let contact =new Contact("Sreeja","Godishala","bankcolony","warangal","telangana","123456","9087654321","srijagodishala@gmail.com");
  console.log(contact); 
 
