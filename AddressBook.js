@@ -77,3 +77,7 @@ console.log(addressBook);
 //4 edit contact
 addressBook.find((contact)=>contact.firstName =="Anjali").firstName ="Krishna";
 console.log(addressBook);
+//5 delete contact
+addressBook.pop(addressBook.find((contact)=>contact.firstName =="Krishna"));
+console.log(addressBook);
+
