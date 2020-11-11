@@ -93,22 +93,76 @@ let contact4 = new Contact("Aarush","Burra","gopalpur","hanamkonda","warangal","
 addressBook.push(contact3)
 addressBook.push(contact4);
 console.log(addressBook);
-//checking duplicate contact
-function addNewContact(addressBook, newContact) {
-    if (
-      addressBook.find(
-        (contact) =>
-          !(contact.firstName) == newContact.firstName &&
-          (!contact.lastName) == newContact.lastName
-      ) 
-    )
-      addressBook.push(newContact);
-    else throw "Contact with same name already exists";
+  //8 serach by city or state
+function searchByCity(addressBook, city) {
+    return addressBook.filter((contact) => contact.city == city);
   }
-  console.log("UC7:Don't allow duplicate contact while adding");
-  let newContact = new Contact("Sreeja","Burra","Madhavnagar","Karimnagar","Telangana","567843","9879654566","sreejaburra@gmial.com");
-  try {
-    addNewContact(addressBook, newContact);
-  } catch (e) {
-    console.error(e);
+  
+  function searchByState(addressBook, state) {
+    return addressBook.filter((contact) => contact.state == state);
   }
+  console.log("UC8: Searching By City And State")
+  console.log(searchByCity(addressBook, "bhopal"));
+  console.log(searchByState(addressBook,"warangal"));
+  //UC9 View By City or State
+  function viewByCity(addressBook) {
+    let contactsByCity = new Map();
+    addressBook.filter((contact) =>
+      contactsByCity.set(contact.city, searchByCity(addressBook, contact.city))
+    );
+    return contactsByCity;
+  }
+  function viewByState(addressBook) {
+    let contactsByState = new Map();
+    addressBook.filter((contact) =>
+      contactsByState.set(
+        contact.state,
+        searchByState(addressBook, contact.state)
+      )
+    );
+    return contactsByState;
+  }
+  console.log("UC9:View Address Book Of Particular City Or State Person ")
+  console.log(viewByCity(addressBook));
+  console.log(viewByState(addressBook));
+//UC10 Count By City or State
+console.log("UC10 :Count by City or State")
+  let countByCity = new Map();
+viewByCity(addressBook).forEach((value, key) =>countByCity.set(key, value.length));
+console.log(countByCity);
+
+let countByState = new Map();
+viewByState(addressBook).forEach((value, key) =>countByState.set(key, value.length));
+console.log(countByState);
+//UC11-12 Sort by name ,city, state zip
+function sortAddressBook(addressBook, sortBy) {
+    switch (sortBy) {
+      case "name":
+        return addressBook.sort((a, b) =>
+          (a.firstName + " " + a.lastName).localeCompare(
+            b.firstName + " " + b.lastName
+          )
+        );
+        break;
+      case "city":
+        return addressBook.sort((a, b) => a.city.localeCompare(b.city));
+        break;
+      case "state":
+        return addressBook.sort((a, b) => a.state.localeCompare(b.state));
+        break;
+      case "zip":
+        return addressBook.sort((a, b) => a.zip.localeCompare(b.zip));
+        break;
+      default:
+        return null;
+    }
+  }
+  console.log("UC11:Sorted By Name: ");
+  console.log(sortAddressBook(addressBook, "name"));
+  console.log("UC11:Sorted By City: ");
+  console.log(sortAddressBook(addressBook, "city"));
+  console.log("UC11:Sorted By State: ");
+  console.log(sortAddressBook(addressBook, "state"));
+  console.log("UC11:Sorted By Zip: ");
+  console.log(sortAddressBook(addressBook, "zip"));
+  
