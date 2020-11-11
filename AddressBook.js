@@ -93,23 +93,15 @@ let contact4 = new Contact("Aarush","Burra","gopalpur","hanamkonda","warangal","
 addressBook.push(contact3)
 addressBook.push(contact4);
 console.log(addressBook);
-//checking duplicate contact
-function addNewContact(addressBook, newContact) {
-    if (
-      addressBook.find(
-        (contact) =>
-          contact.firstName === newContact.firstName &&
-          contact.lastName === newContact.lastName
-      ) === undefined
-    )
-      addressBook.push(newContact);
-    else throw "Contact with same name already exists";
+//8 serach by city or state
+function searchByCity(addressBook, city) {
+    return addressBook.filter((contact) => contact.city == city);
   }
-  console.log("UC7:Don't allow duplicate contact while adding");
-  let newContact = new Contact("Sreeja","Burra","Madhavnagar","Karimnagar","Telangana","567843","9879654566","sreejaburra@gmial.com");
-  try {
-    addNewContact(addressBook, newContact);
-  } catch (e) {
-    console.error(e);
+  
+  function searchByState(addressBook, state) {
+    return addressBook.filter((contact) => contact.state == state);
   }
-
+  console.log("UC8:")
+  console.log(searchByCity(addressBook, "bhopal"));
+  console.log(searchByState(addressBook,"warangal"));
+  
