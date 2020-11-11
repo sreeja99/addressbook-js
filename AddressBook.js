@@ -159,4 +159,10 @@ function sortAddressBook(addressBook, sortBy) {
   }
   console.log("UC11:Sorted By Name: ");
   console.log(sortAddressBook(addressBook, "name"));
+  console.log("UC11:Sorted By City: ");
+  console.log(sortAddressBook(addressBook, "city"));
+  console.log("UC11:Sorted By State: ");
+  console.log(sortAddressBook(addressBook, "state"));
+  console.log("UC11:Sorted By Zip: ");
+  console.log(sortAddressBook(addressBook, "zip"));
   
