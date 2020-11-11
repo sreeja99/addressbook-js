@@ -87,5 +87,29 @@ function counter(count){return ++count;}
 let numOfContacts=addressBook.reduce(counter,0);
 console.log("UC6 Count number Of Contacts");
 console.log(numOfContacts);
-
+//adding Contacts
+let contact3 =new Contact("Rahul","Sharma","naimnagar","bhopal","madhyapradesh","654321","6756874593","rahulsharma@gmail.com");
+let contact4 = new Contact("Aarush","Burra","gopalpur","hanamkonda","warangal","657483","9876786547","aarushburra@gmail.com");
+addressBook.push(contact3)
+addressBook.push(contact4);
+console.log(addressBook);
+//checking duplicate contact
+function addNewContact(addressBook, newContact) {
+    if (
+      addressBook.find(
+        (contact) =>
+          contact.firstName === newContact.firstName &&
+          contact.lastName === newContact.lastName
+      ) === undefined
+    )
+      addressBook.push(newContact);
+    else throw "Contact with same name already exists";
+  }
+  console.log("UC7:Don't allow duplicate contact while adding");
+  let newContact = new Contact("Sreeja","Burra","Madhavnagar","Karimnagar","Telangana","567843","9879654566","sreejaburra@gmial.com");
+  try {
+    addNewContact(addressBook, newContact);
+  } catch (e) {
+    console.error(e);
+  }
 
