@@ -134,4 +134,29 @@ console.log(countByCity);
 let countByState = new Map();
 viewByState(addressBook).forEach((value, key) =>countByState.set(key, value.length));
 console.log(countByState);
+//UC11-12 Sort by name ,city, state zip
+function sortAddressBook(addressBook, sortBy) {
+    switch (sortBy) {
+      case "name":
+        return addressBook.sort((a, b) =>
+          (a.firstName + " " + a.lastName).localeCompare(
+            b.firstName + " " + b.lastName
+          )
+        );
+        break;
+      case "city":
+        return addressBook.sort((a, b) => a.city.localeCompare(b.city));
+        break;
+      case "state":
+        return addressBook.sort((a, b) => a.state.localeCompare(b.state));
+        break;
+      case "zip":
+        return addressBook.sort((a, b) => a.zip.localeCompare(b.zip));
+        break;
+      default:
+        return null;
+    }
+  }
+  console.log("UC11:Sorted By Name: ");
+  console.log(sortAddressBook(addressBook, "name"));
   
