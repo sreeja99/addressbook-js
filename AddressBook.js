@@ -101,7 +101,28 @@ function searchByCity(addressBook, city) {
   function searchByState(addressBook, state) {
     return addressBook.filter((contact) => contact.state == state);
   }
-  console.log("UC8:")
+  console.log("UC8: Searching By City And State")
   console.log(searchByCity(addressBook, "bhopal"));
   console.log(searchByState(addressBook,"warangal"));
+  //UC9 View By City or State
+  function viewByCity(addressBook) {
+    let contactsByCity = new Map();
+    addressBook.filter((contact) =>
+      contactsByCity.set(contact.city, searchByCity(addressBook, contact.city))
+    );
+    return contactsByCity;
+  }
+  function viewByState(addressBook) {
+    let contactsByState = new Map();
+    addressBook.filter((contact) =>
+      contactsByState.set(
+        contact.state,
+        searchByState(addressBook, contact.state)
+      )
+    );
+    return contactsByState;
+  }
+  console.log("UC9:View Address Book Of Particular City Or State Person ")
+  console.log(viewByCity(addressBook));
+  console.log(viewByState(addressBook));
   
